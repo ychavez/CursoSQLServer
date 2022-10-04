@@ -18,3 +18,20 @@ declare @MYVAR as decimal(7,2) = 3
  select FLOOR(@DulcesVendidos) [FLOOR] -- al mas bajo
  select CEILING(@DulcesVendidos) [CEILING] -- al mas alto
  select ROUND(@DulcesVendidos,-1) [ROUND] -- Redondeo normal
+
+
+ -- convertir entre tipos de numero
+
+ -- implicit
+
+ declare @MyDecimal as decimal(5,2) = 3
+ select '3 ' / 2
+
+ select @MyDecimal
+
+
+ -- explicit
+
+ select convert(decimal(5,2),'3')/2
+
+ select cast('3' as decimal(5,2))/2
