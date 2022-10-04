@@ -1,37 +1,45 @@
---Funciones matematicas
-declare @MYVAR as decimal(7,2) = 3
 
---Elevarlo a la potencia 3
- select power(@myvar,3) as Potencia
+-- se recomienda al crear una base de datos siempre estar en master
+use master
+--comentario de una linea 
 
- --Al cuadrado
- seLeCt square(@myvar) as Cuadrado
+/* 
+comentario multilinea
+*/
 
- -- Raiz cuadrada
- select SQRT(@myvar)as RaizCuadrada
+GO
 
+Create database CursoSQLServer
 
- declare @DulcesVendidos as decimal(7,2) = 15.91
+GO
 
- select @DulcesVendidos as DulcesVendidos
+--cambiamos a la base de datos que acabamos de crear
+use CursoSQLServer
 
- select FLOOR(@DulcesVendidos) [FLOOR] -- al mas bajo
- select CEILING(@DulcesVendidos) [CEILING] -- al mas alto
- select ROUND(@DulcesVendidos,-1) [ROUND] -- Redondeo normal
+--crear una tabla
 
+Create table tblEmployee
+(
+	EmployeeNumber int not null,
+	EmployeeFirstName varchar(50) not null,
+	EmployeeMiddleName varchar(50) null,
+	EmployeeLastName varchar(50) not null,
+	EmployeeRFC varchar(16) not null,
+	EmployeeDateOfBirth Date
+)
 
- -- convertir entre tipos de numero
+-- Modificar tabla existente
 
- -- implicit
+ -- agregar columna de departamento
 
- declare @MyDecimal as decimal(5,2) = 3
- select '3 ' / 2
+ alter table tblEmployee Add
+ Department varchar(10)
 
- select @MyDecimal
+ -- mostrar el contenido de un campo
+ select EmployeeNumber from tblEmployee
 
+  -- mostrar el contenido de todos los campos
+ select * from tblEmployee
 
- -- explicit
-
- select convert(decimal(5,2),'3')/2
-
- select cast('3' as decimal(5,2))/2
+  -- mostrar el contenido de todos los campos combinado
+  select EmployeeNumber, * , * from tblEmployee
