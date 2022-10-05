@@ -34,3 +34,34 @@ EmployeeFirstName not like 'J%'
 
 -- traeme todos los nombres que la segunda letra de su nombre sea la letra E
 select * from tblEmployee where EmployeeFirstName like '_e%'
+
+-- traeme todos los nombres que esten en el rango de A - C
+select * from tblEmployee where EmployeeFirstName like '[A-C]%' 
+
+-- treme todos los nombres que esten entre A J Z
+select * from tblEmployee where EmployeeFirstName like '[AJZ]%' 
+  order by EmployeeFirstName desc
+
+
+-- treme todos los nombres que no esten entre A J Z
+select * from tblEmployee where EmployeeFirstName not like '[AJZ]%'
+
+-- treme todos los nombres que no esten entre A J Z
+select * from tblEmployee where EmployeeFirstName  like '[^AJZ]%' 
+
+
+-- trame todos los empleados que su numero sea mayor que 200
+
+select * from tblEmployee where EmployeeNumber > 200
+
+
+--traeme todos los empleados que su numero sea entre 200 y 299
+select * from tblEmployee where EmployeeNumber >= 200 and EmployeeNumber <= 299
+
+--traeme todos los empleados que su numero sea entre 200 y 299 usando between
+select * from tblEmployee where EmployeeNumber between 200 and 299
+
+-- treme todos los empleados que sus numeros sean 201, 300, 800
+select * from tblEmployee where EmployeeNumber in (201,300,800,510)
+
+

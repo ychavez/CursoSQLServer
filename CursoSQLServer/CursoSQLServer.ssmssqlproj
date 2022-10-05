@@ -19,11 +19,23 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="Creacion de base de datos.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Creacion de base de datos.sql</FullPath>
+        </FileNode>
         <FileNode Name="DatosNumericos.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>DatosNumericos.sql</FullPath>
+        </FileNode>
+        <FileNode Name="EmployeeDataSeed.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>EmployeeDataSeed.sql</FullPath>
         </FileNode>
         <FileNode Name="FuncionesMatematicas.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
@@ -31,11 +43,11 @@
           <AssociatedConnUserName />
           <FullPath>FuncionesMatematicas.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery1.sql">
+        <FileNode Name="Select-Where.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery1.sql</FullPath>
+          <FullPath>Select-Where.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
