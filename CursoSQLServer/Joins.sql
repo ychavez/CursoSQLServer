@@ -30,11 +30,45 @@ GROUP BY EmployeeNumber;
 -----------------------------------------------------------
 -- a tener en cuenta que el numero de empleado existe en ambas tablas
 -- plus si ordenamos por numero de empleado
-
+SELECT *
+FROM tblEmployee;
 SELECT e.EmployeeFirstName [Nombre Empleado], 
        T.EmployeeNumber [Numero de Empleado], 
        SUM(Amount) [Suma de transacciones]
 FROM tblTransaction T
      JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
-GROUP BY T.EmployeeNumber, e.EmployeeFirstName
-Order by t.EmployeeNumber
+GROUP BY T.EmployeeNumber, 
+         e.EmployeeFirstName
+ORDER BY t.EmployeeNumber;
+
+-- traemos el reporte de transacciones por empleado aun que el empleado no tenga transacciones
+SELECT e.EmployeeFirstName [Nombre Empleado], 
+       E.EmployeeNumber [Numero de Empleado], 
+       SUM(Amount) [Suma de transacciones]
+FROM tblTransaction T
+     RIGHT JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY E.EmployeeNumber;
+
+-- traemos el reporte de transacciones por empleado aun que el empleado no tenga transacciones
+SELECT e.EmployeeFirstName [Nombre Empleado], 
+       E.EmployeeNumber [Numero de Empleado], 
+       SUM(Amount) [Suma de transacciones]
+FROM tblTransaction T
+     left JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY E.EmployeeNumber;
+
+
+
+-- traemos el reporte de transacciones por empleado aun que el empleado no tenga transacciones
+SELECT e.EmployeeFirstName [Nombre Empleado], 
+       E.EmployeeNumber [Numero de Empleado], 
+       SUM(Amount) [Suma de transacciones]
+FROM tblTransaction T
+     full JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY E.EmployeeNumber;
