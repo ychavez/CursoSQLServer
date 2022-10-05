@@ -35,7 +35,12 @@ select YEAR(employeeDateOfBirth) as YearOfBirth,  count(*)
 	 --- solamente necesitamos los que sean mayor a 10
 	 select LEFT(EmployeeFirstName,1) as Letra, count(*) as Cuenta 
 	 from tblEmployee
-	 --where cuenta > 10
+	where LEFT(EmployeeFirstName,1) <> 'A'
 	 group by LEFT(EmployeeFirstName,1)
 	 having count(*) > 50 -- having nos permite filtrar por lo agrupado
 	 order by LEFT(EmployeeFirstName,1)
+
+
+
+	 --traer los primeros 5 registros
+	 select top(5) * from tblEmployee
