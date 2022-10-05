@@ -43,11 +43,41 @@
           <AssociatedConnUserName />
           <FullPath>FuncionesMatematicas.sql</FullPath>
         </FileNode>
+        <FileNode Name="GroupBy y having.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>GroupBy y having.sql</FullPath>
+        </FileNode>
+        <FileNode Name="Joins.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>Joins.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SeedTransactions.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SeedTransactions.sql</FullPath>
+        </FileNode>
         <FileNode Name="Select-Where.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>Select-Where.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery1.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery1.sql</FullPath>
+        </FileNode>
+        <FileNode Name="transaction table.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-VP4KD58:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-VP4KD58</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>transaction table.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

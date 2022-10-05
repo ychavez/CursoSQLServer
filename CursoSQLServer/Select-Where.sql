@@ -65,3 +65,9 @@ select * from tblEmployee where EmployeeNumber between 200 and 299
 select * from tblEmployee where EmployeeNumber in (201,300,800,510)
 
 
+select Left(EmployeeFirstName,1) Letra, count(*) Cuenta
+from tblEmployee where EmployeeFirstName like '[AL]%'
+group by Left(EmployeeFirstName,1)
+
+
+

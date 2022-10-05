@@ -56,19 +56,73 @@ SELECT e.EmployeeFirstName [Nombre Empleado],
        E.EmployeeNumber [Numero de Empleado], 
        SUM(Amount) [Suma de transacciones]
 FROM tblTransaction T
-     left JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+     LEFT JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
 GROUP BY E.EmployeeNumber, 
          E.EmployeeFirstName
 ORDER BY E.EmployeeNumber;
-
-
 
 -- traemos el reporte de transacciones por empleado aun que el empleado no tenga transacciones
 SELECT e.EmployeeFirstName [Nombre Empleado], 
        E.EmployeeNumber [Numero de Empleado], 
        SUM(Amount) [Suma de transacciones]
 FROM tblTransaction T
-     full JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+     FULL JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
 GROUP BY E.EmployeeNumber, 
          E.EmployeeFirstName
 ORDER BY E.EmployeeNumber;
+
+-- traemos todo el reporte de transacciones por empleado y validamos aquellos que sean NULL
+SELECT ISNULL(e.EmployeeFirstName, 'No existe') [Nombre Empleado], 
+       ISNULL(E.EmployeeNumber, 0) [Numero de Empleado], 
+       ISNULL(SUM(Amount), 0) [Suma de transacciones]
+FROM tblTransaction T
+     FULL JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY SUM(amount) DESC;
+
+--- aquellas transacciones que no tuvieron un empleado se las asignaremos al que vendio mas en este periodo
+-- obtenemos el empleado con mayores ventas
+DECLARE @EmpleadoMax VARCHAR(40), @EmpleadoNumeroMax INT;
+-- asignamos los valores a las variables
+SELECT TOP 1 @EmpleadoMax = e.EmployeeFirstName + ' bono', 
+             @EmpleadoNumeroMax = E.EmployeeNumber
+FROM tblTransaction T
+     JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY SUM(amount) DESC;
+
+
+SELECT ISNULL(e.EmployeeFirstName, @EmpleadoMax) [Nombre Empleado], 
+       ISNULL(E.EmployeeNumber, @EmpleadoNumeroMax) [Numero de Empleado], 
+       ISNULL(SUM(Amount), 0) [Suma de transacciones]
+FROM tblTransaction T
+     FULL JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY SUM(amount) DESC;
+
+go
+--- las mismas reglas de arriba pero tenemos un constraint de fecha de nacimiento
+DECLARE @EmpleadoMax VARCHAR(40), @EmpleadoNumeroMax INT;
+
+SELECT TOP 1 @EmpleadoMax = e.EmployeeFirstName + ' bono', 
+             @EmpleadoNumeroMax = E.EmployeeNumber
+FROM tblTransaction T
+      JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+where YEAR(e.EmployeeDateOfBirth) < 1992 
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName,
+		 e.EmployeeDateOfBirth
+having SUM(Amount) > 3000
+ORDER BY SUM(amount) DESC;
+
+SELECT coalesce(e.EmployeeFirstName,@EmpleadoMax,'Empresa') [Nombre Empleado], 
+       coalesce(E.EmployeeNumber, @EmpleadoNumeroMax,0) [Numero de Empleado], 
+       ISNULL(SUM(Amount), 0) [Suma de transacciones]
+FROM tblTransaction T
+     FULL JOIN tblEmployee E ON t.EmployeeNumber = e.EmployeeNumber
+GROUP BY E.EmployeeNumber, 
+         E.EmployeeFirstName
+ORDER BY SUM(amount) DESC;
