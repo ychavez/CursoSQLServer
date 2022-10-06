@@ -1,4 +1,5 @@
-
+ALTER TABLE tblTransactionNew
+ADD CONSTRAINT unqRegistro UNIQUE(employeenumber, amount); --- especificamos que el mismo empleado no puede tener dos transacciones con el mismo monto
 /*insert
 update
 delete
@@ -63,9 +64,9 @@ VALUES
  GETDATE(), 
  1
 ),
-(2002, 
+(2001, 
  GETDATE(), 
- 2
+ 1
 ),
 (2003, 
  GETDATE(), 
@@ -88,10 +89,19 @@ EXEC MergeTransactions
 
 --- ponerlo en un stored procedure
 GO
-CREATE PROC MergeTransactions @transacciones AS TBLTRANSACTIONTYPE READONLY
+CREATE or Alter PROC MergeTransactions @transacciones AS TBLTRANSACTIONTYPE READONLY
 AS
-     INSERT INTO tblTransaction
-            SELECT *
-            FROM @transacciones
-
-
+    BEGIN
+        BEGIN TRAN;
+        BEGIN TRY
+            INSERT INTO tblTransactionNew
+                   SELECT *
+                   FROM @transacciones;
+            COMMIT TRAN;
+        END TRY
+        BEGIN CATCH
+            SELECT ERROR_MESSAGE() AS MensajeError, 
+                   ERROR_SEVERITY() AS severidad;
+            ROLLBACK TRAN;
+        END CATCH;
+    END;
