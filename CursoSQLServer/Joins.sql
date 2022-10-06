@@ -126,3 +126,27 @@ FROM tblTransaction T
 GROUP BY E.EmployeeNumber, 
          E.EmployeeFirstName
 ORDER BY SUM(amount) DESC;
+
+
+/*
+-- 1 crear una base de datos llamada encuestas
+    debe de contener las siguientes tablas
+	 -- preguntas
+	    (debe de contener el numero de pregunta)
+	 -- respuestas
+	    (pista las respuestas deben de tener un NumeroDePregunta)
+
+	2 realizar una consulta en la 
+	cual me traiga todas las preguntas con sus respuestas
+	   (en caso de que la pregunta no tenga respuestas poner NULL)
+   
+    3 realizar la misma consulta con
+	la diferiencia si no tiene respuestas
+	poner la leyenda (no tiene respuestas)
+
+
+	    puntos extra utilizar el coalesce
+
+*/
+      
+		
