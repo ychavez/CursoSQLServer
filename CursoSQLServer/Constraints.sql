@@ -87,3 +87,26 @@ ALTER TABLE tbltransaction DROP CONSTRAINT FK_tbltransaction_tblEmployee;
 SELECT *
 FROM tblTransaction
 WHERE EmployeeNumber = 2000;
+
+
+
+---borrado en cascada
+
+select * from tblEmployee where EmployeeNumber = 2000
+
+select * from tblTransaction where EmployeeNumber = 2000
+
+delete tblEmployee where EmployeeNumber = 2000
+
+
+ALTER TABLE tbltransaction DROP CONSTRAINT FK_tbltransaction_tblEmployee;
+
+--- Aplicamos borrado en cascada
+ALTER TABLE tbltransaction
+ADD CONSTRAINT FK_tbltransaction_tblEmployee 
+FOREIGN KEY(employeenumber) 
+REFERENCES tblemployee(employeenumber)
+ON DELETE CASCADE
+
+
+
