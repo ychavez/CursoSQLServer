@@ -8,6 +8,8 @@ Merge*/
 SELECT *
 INTO tblTransactionNew
 FROM tblTransaction;
+
+
 MERGE INTO tbltransaction AS t --- tabla a hacerle merge
 USING tblTransactionNew AS N --- la tabla de la que traeremos la informacion
 ON t.employeenumber = N.employeenumber
